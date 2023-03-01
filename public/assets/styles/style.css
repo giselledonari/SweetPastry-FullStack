@@ -1,0 +1,234 @@
+body{
+    min-height: 900px;
+}
+.producto{
+    background-color:#fcf6ff;
+}
+p{
+    text-align: justify;
+    
+}
+
+
+h2, h3,h6{
+    color:#6b4783;
+}
+h6{
+    text-align:center;
+    font-size:x-large;
+}
+li{
+    margin-bottom: 10px;
+}
+
+
+.nav-link{
+    transition: all 0.2s;
+    position: relative;
+}
+
+.nav-link::after{
+    opacity: 0;
+    transition: all 0.2s;
+    content:'';
+    height: 3px;
+    width:100%;
+    background-color:#b77ddf; 
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+}
+
+.nav-link:hover::after {
+    opacity:1 ;
+}
+
+.tamaño-texto{
+    width:30px ;
+    height: 25px;
+    text-align: center;
+    justify-items: center;
+    margin: auto;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+
+.btn-mas, .btn-menos{
+    background-color: #9acbce;
+    border-color:#046469;
+    color:#046469;
+    text-align: center;
+    padding: 0%;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    margin-bottom: 20px;
+}
+.btn-mas:hover, .btn-menos:hover{
+    background-color: #d6bee5;
+    border-color:#6b4783;
+    color:#6b4783;
+    text-align: center;
+    padding: 0%;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    margin-bottom: 20px;
+}
+.btn-carro2, .btn-productos, .btn-enviar,.btn-registrate{
+    background-color: #d6bee5;
+    border-color:#6b4783;
+    color:#6b4783;
+}
+.btn-enviar, .btn-registrate{
+    margin-left: 1%;
+    margin-right: 1%;
+    border: 1px solid #6b4783 ;
+    border-radius: 8px;
+}
+main{
+    min-height: 600px;
+}
+.img-cortar {
+    object-fit: cover;
+    object-position: bottom;
+}
+.img-cortar2 {
+    object-fit: cover;
+    object-position:50%;
+}
+
+.principal{
+    --opacidad-negro:0.6;
+    background-image: linear-gradient(rgba(0, 0, 0, var(--opacidad-negro)), rgba(0, 0, 0, var(--opacidad-negro))), url("../img/home1.jpg");
+    background-size: cover;
+    min-width: 100vh;
+    background-position: center;
+    height: 600px;
+}
+
+.bienvenido{  
+    color:#ffffff;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+.aCarrito{
+    text-decoration: none;
+    color:white;
+}
+.aCarrito2, .aProductos, .aEnviar, .aRegistrate{
+    text-decoration: none;
+    color:#6b4783;
+}
+
+footer div{
+    margin-top: 10px;
+    color: gray;
+}
+
+.carrusel{
+    height: 600px;
+    filter:brightness(70%)
+}
+.nuestrosProductos{
+    color:#6b4783;  
+}
+.nuestrosProductos:hover{
+    color:#046469;
+    transform: scale(1.1);
+}
+
+hr{
+    color:rgb(229, 143, 196);
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.descuento, .vaciarCarro{
+    display: flex;
+    justify-content: right;
+    margin-right: 2%;
+}
+
+.btn-descuento{
+    background-color:#6b4783;   
+    color:white;  
+    height: 40px;
+    width: 90px;
+    border:1px solid #6b4783 ;
+    border-radius: 0%;
+}
+
+.btn-vaciarCarro{
+    background-color:lightgray;
+    color:gray;
+    border-radius: 5px;
+    border: none;
+    font-size: small;
+}
+
+.input-descuento{
+    border:1px solid #6b4783;
+    height: 40px;
+    width: 250px;
+    border-radius: 0%;
+}
+.descuento10OFF{
+    font-size: small;
+    display: flex;
+    margin-right: 2%;
+    justify-content: right;
+}
+.sinLinea{
+    border-color:transparent;
+
+}
+.btn-eliminar, .btn-disminuirCarro, .btn-aumentarCarro{
+    background-color: transparent;
+    font-weight: 600;
+    border:none;
+}
+.btn-eliminar, .btn-disminuirCarro{
+    color:red;
+}
+.btn-aumentarCarro{
+    color:rgb(30, 151, 0);
+}
+
+.botones{
+    display: flex;
+    width: 100px;
+    margin-left: 20px;
+    margin-top:-18px;
+}
+
+.btn-enviar, .btn-registrate{
+    width: 150px;
+    font-size: medium;
+}
+
+.aEnviar:hover{
+    color:#ffffff
+}
+.aRegistrate:hover{
+    color:#ffffff
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
