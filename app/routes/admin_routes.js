@@ -3,6 +3,7 @@ const fs = require("fs");
 const router=express.Router()
 const bodyParser = require("body-parser");
 const { agregarProducto,eliminarProducto,modificarProducto,verCompras,verDetalleCompras}=require('../controllers/admin_controller.js')
+const {uploadImage}=require("./helpers.js")
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -30,13 +31,13 @@ router.get("/admin/home", async(req, res) => {
 
 
 //agregar un producto
-router.post("/agregarProducto",async (req,res)=>{
+router.post("/agregarProducto",uploadImage.single("imagen"),async (req,res)=>{
     let id=req.body.idProducto;
     let nombre=req.body.nombre;
     let precio=req.body.precio;
     let inventario=req.body.inventario;
     let description=req.body.description;
-    let imagen=req.body.imagen;
+    let imagen=req.file.filename;
 
     try{
         await agregarProducto(id,nombre,precio,inventario,description,imagen)

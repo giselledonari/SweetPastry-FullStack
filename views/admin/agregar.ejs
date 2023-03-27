@@ -24,7 +24,7 @@
         <div class="col-8">
             <div class=" m-5" style="width: 800px">
                 <h2 >Agregar Producto</h2>
-                <form id="formAgregar" action="/agregarProducto" method="post" class="row g-3 mt-3 col-10">
+                <form id="formAgregar" action="/agregarProducto" method="post" class="row g-3 mt-3 col-10" enctype="multipart/form-data">
 
                     <div class="col-md-12">
                       <label for="nombre" class="form-label">Nombre</label>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-12">
                         <label for="imagen" class="form-label">Imagen</label>
-                        <input type="text" class="form-control" id="imagen" name="imagen" placeholder="Use el nombre de alguna de las imagenes de assets/img incluya el .jpg" required>
+                        <input type="file" class="form-control" id="imagen" name="imagen" placeholder="max 2mb" accept=".jpg,.jpeg ,.png" max-size="2000000" required>
                       </div>
                     <div class="col-md-4">
                       <label for="idProducto" class="form-label">Id</label>
@@ -69,8 +69,7 @@
 
     <%- include('../footer') %>
 
-    <script src="../assets/javascript/admin.js">
-        
-    </script>
+    <script src="../assets/javascript/admin.js">  </script>
+    <script src="../assets/javascript/app.js"></script>
   </body>
 </html>

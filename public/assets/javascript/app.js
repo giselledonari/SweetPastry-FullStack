@@ -165,3 +165,21 @@ card.forEach((cardProducto) => {
     window.location.href = `/productoid/${id}`;
   });
 });
+
+//cambiar el nav segun el usuario
+
+let menu=document.querySelector("#menu")
+
+async function menuUsuario() {
+  const resp=await fetch("/api/user")
+  const respuesta=await resp.text()
+
+  if(respuesta=="admin"){
+    menu.innerHTML=`<a class="nav-link text-dark nav-carrito" href="/admin/home" >Admin </a>`
+  }
+  else{
+    menu.innerHTML=`<a class="nav-link text-dark nav-carrito" href="/carrito" >Carrito <span id="numero-carrito">(0)</span></a>`
+  }
+}
+
+menuUsuario()

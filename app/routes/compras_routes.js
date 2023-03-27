@@ -3,16 +3,7 @@ const router = express.Router();
 const bodyParser = require("body-parser");
 const cookie = require("cookie");
 
-const {
-  getCarrito,
-  getCarritoProductos,
-  agregarCarrito,
-  modificarCarrito,
-  vaciarCarrito,
-  eliminarProductoCarrito,
-  eliminarStockCero,
-  generarCompra,
-} = require("../controllers/compras_controller.js");
+const {getCarrito,getCarritoProductos,agregarCarrito,modificarCarrito,vaciarCarrito,eliminarProductoCarrito,eliminarStockCero,generarCompra} = require("../controllers/compras_controller.js");
 const { perfil, uploadImage } = require("./helpers.js");
 
 //pagina carrito
@@ -90,6 +81,7 @@ router.post("/agregarCarrito", async (req, res) => {
     res.render("error");
   }
 });
+
 
 router.put("/modificarCarrito", async (req, res) => {
   let cantidad = req.body.cantidad;
