@@ -223,7 +223,17 @@ hr{
 }
 
 
-
+.bg-image-login {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../img/home2.jpg");
+    filter: opacity(70%);
+}
+.formulario{
+    display: flex;
+    justify-content: center;
+}
 
 
 

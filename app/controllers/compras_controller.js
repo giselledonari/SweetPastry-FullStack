@@ -8,8 +8,8 @@ const { v4: uuidv4 } = require('uuid')
 const { sequelize } = require("../database/db2.js");
 const { getProductos,getProducto}=require('./general_controller.js')
 
-async function getCarrito() {
-  const respuesta = await carrito.findAll({ where: { usuario_rut: "00-0" } });
+async function getCarrito(usuario) {
+  const respuesta = await carrito.findAll({ where: { usuario_rut: usuario } });
   return respuesta;
 }
 
@@ -36,7 +36,7 @@ async function vaciarCarrito(usuario) {
   return respuesta;
 }
 
-async function getCarritoProductos(usuario="00-0") {
+async function getCarritoProductos(usuario) {
   const respuesta = await carrito.findAll({
     include: [
       {
@@ -59,14 +59,14 @@ async function eliminarProductoCarrito(producto, usuario) {
   return respuesta;
 }
 
-async function eliminarStockCero() {
-  const respuesta = await carrito.destroy({ where: { cantidad: 0 } });
+async function eliminarStockCero(usuario) {
+  const respuesta = await carrito.destroy({ where: { cantidad: 0,usuario_rut: usuario } });
   return respuesta;
 }
 
 //compra
 async function generarCompra(usuario) {
-    console.log(usuario)
+    
     const t=await sequelize.transaction()
     const dataCarritoAux = await getCarritoProductos(usuario);
     const dataCarrito = dataCarritoAux.map((item) => item.dataValues);
@@ -81,13 +81,14 @@ async function generarCompra(usuario) {
           });
         
         for (let value of dataCarrito){
-            let id=value.id
+            let id=value.producto_id
             let cantidad=value.cantidad
-            let inventarioAux=await getProducto(id)
+            let inventarioAux=await getProducto(id) 
             let inv=inventarioAux.dataValues.inventario
-            console.log(inv)
+            console.log(inventarioAux)
             
             let new_inventario=parseInt(inv)-parseInt(cantidad)
+            console.log(new_inventario,inv,cantidad)
 
             await detalle_compra.create({
                 producto_id:id,
@@ -95,9 +96,7 @@ async function generarCompra(usuario) {
                 compra_id:id_compra
             })
 
-            await productos.update(
-                {inventario:new_inventario},
-                {where:{id:id}})
+            await productos.update({inventario:new_inventario},{where:{id:id}})
         }
         await vaciarCarrito(usuario)
 

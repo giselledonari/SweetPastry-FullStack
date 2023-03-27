@@ -1,7 +1,7 @@
 const productos = require("../modelo/productos.js");
 
 async function getProductos() {
-    const respuesta=await productos.findAll()
+    const respuesta=await productos.findAll({order: [["id", "ASC"]]})
     return respuesta
 }
 

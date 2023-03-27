@@ -49,8 +49,8 @@ router.post("/agregarProducto",async (req,res)=>{
 })
 
 //eliminar un producto
-router.delete("/eliminarProducto/:id", async(req,res)=>{
-    let id=req.params.id;
+router.delete("/eliminarProducto", async(req,res)=>{
+    let id=req.body.id;
     try{
         await eliminarProducto(id)
         res.render("admin/eliminar",{mensaje:"Producto eliminado "})

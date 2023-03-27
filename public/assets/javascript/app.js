@@ -24,32 +24,38 @@ for (let i = 0; i < quitar.length; i++) {
 }
 //obtener productos
 async function obtener_productos(){
-  let fetch_data= await fetch("http://localhost:3000/api/productos")
+  let fetch_data= await fetch("/api/productos")
   let data =await fetch_data.json()
   return data
 }
 
 //obtener carro
 async function obtener_carrito(){
-  let fetch_data= await fetch("http://localhost:3000/api/carrito")
+  let fetch_data= await fetch("/api/carrito")
   let data =await fetch_data.json()
   return data
 }
 
 //funcion para agregar al carro
 async function aumentar(id) {
-  
   let carro=await obtener_carrito()
+  if (carro.err){
+    document.querySelector("#alert").innerHTML=`
+      <div class="alert alert-danger" role="alert">
+          Oooops! debes iniciar sesion para agregar productos a tu carrito
+      </div>
+      `
+  }
   let productos=await obtener_productos()
   let producto =productos.find((x) => {return x.id == id;})
-  console.log(producto)
+  
 
   let producto_carro = carro.find((x) => {return x.producto_id == producto.id;}); 
   console.log(producto_carro)
   //si no esta en el carro el producto
   if (producto_carro === undefined) {
     if (producto.inventario > 0) {
-      await fetch("http://localhost:3000/agregarCarrito",{
+      await fetch("/agregarCarrito",{
         method:'POST',
         headers:{
           'Content-Type': 'application/json'
@@ -68,7 +74,7 @@ async function aumentar(id) {
   else {
     if (producto_carro.cantidad< producto.inventario) {
       let nueva_cantidad=producto_carro.cantidad + 1;
-      await fetch("http://localhost:3000/modificarCarrito",{
+      await fetch("/modificarCarrito",{
         method:'PUT',
         headers:{
           'Content-Type': 'application/json'
@@ -88,6 +94,13 @@ async function aumentar(id) {
 //funcion para quitar del carro (de a 1)
 async function disminuir(id) {
   let carro=await obtener_carrito()
+  if (carro.err){
+    document.querySelector("#alert").innerHTML=`
+      <div class="alert alert-danger" role="alert">
+          Oooops! debes iniciar sesion para agregar productos a tu carrito
+      </div>
+      `
+  }
   let productos=await obtener_productos()
   let producto = productos.find((x) => {return x.id ==id;})
 
@@ -98,7 +111,7 @@ async function disminuir(id) {
     return;
   } else {
     let nueva_cantidad=producto_carro.cantidad - 1;
-      await fetch("http://localhost:3000/modificarCarrito",{
+      await fetch("/modificarCarrito",{
         method:'PUT',
         headers:{
           'Content-Type': 'application/json'
@@ -145,10 +158,10 @@ let card = document.querySelectorAll(".cardProductos");
 card.forEach((cardProducto) => {
   cardProducto.addEventListener("click", () => {
     let id = cardProducto.id;
-    fetch(`'http://127.0.0.1::3000/productoid/${id}`).then((resp) =>
+    fetch(`/productoid/${id}`).then((resp) =>
       resp.json()
     );
 
-    window.location.href = `http://localhost:3000/productoid/${id}`;
+    window.location.href = `/productoid/${id}`;
   });
 });

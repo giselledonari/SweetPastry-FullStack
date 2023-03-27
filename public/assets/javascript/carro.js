@@ -3,7 +3,7 @@ let carroCompras = document.getElementById("carrito-compras");
 traer_carrito(usuario)
 //traer el carrito
 async function traer_carrito(){
-  await fetch(`http://localhost:3000/carrito/`)
+  await fetch(`/carrito/`)
 }
 
 //leer botones disminuir carro
@@ -39,7 +39,7 @@ for (let i = 0; i < eliminarItem.length; i++) {
 }
 
 async function eliminar(id,rut){
-    await fetch("http://localhost:3000/eliminarProductoCarrito",{
+    await fetch("/eliminarProductoCarrito",{
         method:'DELETE',
         headers:{
           'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ async function eliminar(id,rut){
 }
 
 async function vaciarCarro(rut){
-    await fetch("http://localhost:3000/vaciarCarrito",{
+    await fetch("/vaciarCarrito",{
         method:'DELETE',
         headers:{
           'Content-Type': 'application/json'
@@ -66,12 +66,12 @@ async function vaciarCarro(rut){
 }
 
 async function eliminarCeros(){
-    await fetch("http://localhost:3000/eliminarStockCero",{method:'DELETE'})
+    await fetch("/eliminarStockCero",{method:'DELETE'})
 
 }
 
 async function compra(rut){
-  await fetch("http://localhost:3000/compra",{
+  await fetch("/compra",{
       method:'POST',
       headers:{
         'Content-Type': 'application/json'
@@ -83,11 +83,6 @@ async function compra(rut){
 
 }
 
-//leer aplicarDescuento
-
-document.querySelector("#boton-descuento").addEventListener("click", () => {
-  descuento();
-});
 
 //leer vaciarCarro
 
@@ -99,6 +94,7 @@ document.querySelector("#boton-vaciarCarro").addEventListener("click",async () =
 //hacer la compra
 
 document.querySelector("#btn-comprar").addEventListener("click",async () => {
+  console.log("comprando")
   await compra(usuario)
   document.querySelector("#finalcompra").innerHTML=`<h3 class="mt-3">Gracias por tu Compra!</h3>`
 });

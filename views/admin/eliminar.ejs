@@ -34,7 +34,11 @@
                       <button type="submit" class="btn btn-danger">Eliminar</button>
                     </div>
                   </form>
-                  <h4 class="mt-3"><%= mensaje %></h4>
+                  
+                  <% if (mensaje) { %>
+                    <h4 class="mt-3"><%= mensaje %></h4>
+                  <% } %>
+                  
             </div>
         </div>
     </div>

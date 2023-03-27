@@ -12,7 +12,7 @@
 <body class="carrito">
   <%- include('nav') %>
   <div class="container mt-5 " id="finalcompra">
-    <h2 > Mi carrito</h2>
+    <h2 > Hola! <%= dataUser.nombre %> <%=dataUser.apellido %> este es tu carrito:</h2>
       <br>
       <% if (data==[]){ %>
         <h3>Aun no tienes ningun producto en tu carrito</h3>
@@ -49,17 +49,14 @@
         </table>
         <br>
 
-        <div id="descuento" >
-          <div class="descuento ">
-            <input id="input-descuento" type="text" class="input-descuento">
-            <button id="boton-descuento" class="btn-descuento" >APLICAR</button> 
-          </div>
-          <div class="descuento10OFF"><p> Usa 10OFF para un 10% de descuento.</p></div> 
-          <div class="vaciarCarro">
-            <button id="boton-vaciarCarro" class="btn-vaciarCarro"  >Vaciar carro</button> 
-          </div>
+        
+         
           
+        <div class="vaciarCarro">
+          <button id="boton-vaciarCarro" class="btn-vaciarCarro"  >Vaciar carro</button> 
         </div>
+          
+        
       <% } %>
         <div class="row mt-5">
           <div class="col-6">

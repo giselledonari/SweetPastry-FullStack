@@ -7,7 +7,7 @@ const usuarios = sequelize.define("usuarios",{
       primaryKey: true,
     },
     contraseña: {
-      type: DataTypes.STRING(20)
+      type: DataTypes.STRING(100)
     },
     nombre_cliente: {
       type: DataTypes.STRING(50)
