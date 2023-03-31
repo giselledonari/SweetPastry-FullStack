@@ -23,13 +23,19 @@ El proyecto utiliza las siguientes tecnologías:
 
 La página principal (`index.ejs`) muestra una descripción del negocio.
 
-![Página principal](/g/homepage.png)
+![Página principal](https://github.com/giselledonari/sweetpastry/blob/main/git/scr1.jpg)
 
 La página de productos (`products.ejs`) muestra todos los productos disponibles en la tienda. Al hacer clic en un producto, se muestra una descripción del producto y botones para agregar o quitar el producto del carrito de compras.
 
+![Producto](https://github.com/giselledonari/sweetpastry/blob/main/git/scr2.jpg)
+
 Los usuarios autenticados pueden acceder a su propio carrito de compras (`carrito.ejs`) donde pueden agregar o eliminar productos y finalizar la compra.
 
+![Carrito](https://github.com/giselledonari/sweetpastry/blob/main/git/scr3.jpg)
+
 La función de administrador permite agregar nuevos productos (`admin/agregar.ejs`), eliminar productos existentes (`admin/eliminar.ejs`) y modificar productos existentes (`admin/modificar.ejs`). El administrador también tiene una página (`admin/home.ejs`) donde puede ver las ventas realizadas.
+
+![Admin](https://github.com/giselledonari/sweetpastry/blob/main/git/scr4.jpg)
 
 Los datos del proyecto se almacenan en una base de datos PostgreSQL, y se utiliza Sequelize como ORM para interactuar con la base de datos. El servidor proporciona una API REST que se comunica con el front-end en EJS, y utiliza los verbos HTTP para crear, leer, actualizar y eliminar recursos.
 
